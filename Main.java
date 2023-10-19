@@ -5,6 +5,8 @@ public class Main {
         prueba.cifraIdiomaLetra("peine", 'f');
         prueba.cifraIdiomaLetra("aeroportuario", 'f');
         prueba.cifraIdiomaLetra("cadenas perpetuas", 'p');
-        System.out.println(prueba.dividirSilabas("uaugmsaumcmcapspreizxn"));
+        System.out.println(prueba.dividirSilabas("esperanza"));
+        prueba.cifraIdiomaLadron("monstruos", 'i');
+
     }        
 }

@@ -29,17 +29,29 @@ public class Cifrador {
         return nueva;
     }
 
-    // public String cifraIdiomaLadron(String original, char v){
-    //     String letraAnterior = "";
-    //     String formato = original;
-    //     String nueva = "";
-    //     for(int i=0; i < formato.length() ; i ++){
-    //         char c = formato.charAt(i);
-// 
+    public String cifraIdiomaLadron(String original, char v){
+        String cifra = "";
+        for(int i = 0; i < original.length(); i++){
+            char c = original.charAt(i);
+            boolean esConsonante = "aeiou".indexOf(c) == -1;
+            String consonanteActual = "";
+            if(esConsonante){
+                consonanteActual = String.valueOf(c);
+                cifra += consonanteActual + v + consonanteActual;
+            } else {
+                cifra += String.valueOf(c);
+            }
+        }
+        System.out.println(cifra);
+        return cifra;
+    }
+
+    // public String decifraLadron(String cifrado){
+    //     String cifrado = "";
+    //     for(int i = 0; i < cifrado.length(); i++){
+    //         
     //     }
     // }
-
-    // monstruo mononsostosroruo? 
     public static String dividirSilabas(String palabra) {
         String resultado = "";
         String silaba = "";
