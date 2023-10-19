@@ -4,6 +4,7 @@ public class Main {
         prueba.cifraIdiomaLetra("monstruos", 'f');
         prueba.cifraIdiomaLetra("peine", 'f');
         prueba.cifraIdiomaLetra("aeroportuario", 'f');
-        prueba.cifraIdiomaLetra("capnomancia", 'f');
+        prueba.cifraIdiomaLetra("cadenas perpetuas", 'p');
+        System.out.println(prueba.dividirSilabas("uaugmsaumcmcapspreizxn"));
     }        
 }

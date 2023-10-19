@@ -1,45 +1,31 @@
-public class Cifrador {
-
+public class Refactorizado {
     public String cifraIdiomaLetra ( String original, char x){
         String formato = dividirSilabas(original);
         String nueva = "";
         String ultimaVocal = "";
+        boolean cambioSilaba = false;
         for (int i = 0; i < formato.length(); i++) {
+            boolean fin = (i==formato.length()-1) ? true : false;
             char c = formato.charAt(i);
-            boolean esVocal = "aeiou".indexOf(c) != -1;
-            if (esVocal) {
+            cambioSilaba = (c=='-') ? true : false;
+            boolean vocalActual = "aeiou".indexOf(c) != -1;
+            if (!cambioSilaba && fin && vocalActual) {
+                nueva += String.valueOf(c) + String.valueOf(x) + ultimaVocal;
                 ultimaVocal = String.valueOf(c);
-            }
-            if (c == '-') {
+            } else if (!cambioSilaba && vocalActual) {
+                ultimaVocal = String.valueOf(c);
+                nueva += String.valueOf(c);
+            } else if (!cambioSilaba) {
+                nueva += String.valueOf(c);
+            } else if (cambioSilaba) {
+                cambioSilaba = false;
                 nueva += String.valueOf(x) + ultimaVocal;
-                continue;
-            }
-            if(i != formato.length()-1){
-                nueva += c;
-            }
-            if (i == formato.length() - 1){
-                if(esVocal){
-                    nueva += c + String.valueOf(x) + ultimaVocal;
-                } else {
-                    nueva += String.valueOf(x) + ultimaVocal + c;
-                }
             }
         }
         System.out.println(nueva);
         return nueva;
     }
 
-    // public String cifraIdiomaLadron(String original, char v){
-    //     String letraAnterior = "";
-    //     String formato = original;
-    //     String nueva = "";
-    //     for(int i=0; i < formato.length() ; i ++){
-    //         char c = formato.charAt(i);
-// 
-    //     }
-    // }
-
-    // monstruo mononsostosroruo? 
     public static String dividirSilabas(String palabra) {
         String resultado = "";
         String silaba = "";
@@ -69,5 +55,4 @@ public class Cifrador {
         resultado += silaba;
         return resultado;
     }
-    
 }
