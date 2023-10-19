@@ -46,12 +46,22 @@ public class Cifrador {
         return cifra;
     }
 
-    // public String decifraLadron(String cifrado){
-    //     String cifrado = "";
-    //     for(int i = 0; i < cifrado.length(); i++){
-    //         
-    //     }
-    // }
+    public String decifraLadron(String cifrado){
+        String nueva = "";
+        for(int i = 0; i < cifrado.length(); i++){
+            char c = cifrado.charAt(i);
+            boolean esConsonanteActual = "abcdefghijklmnñopqrstuvwxyz ".indexOf(c) != -1;
+            boolean repetida = c==cifrado.charAt(i+2);
+            if(esConsonanteActual && repetida){
+                nueva += c;
+                i += 2;
+            } else {
+                nueva += c;
+            }
+        }
+        System.out.println(nueva);
+        return nueva;
+    }
     public static String dividirSilabas(String palabra) {
         String resultado = "";
         String silaba = "";
