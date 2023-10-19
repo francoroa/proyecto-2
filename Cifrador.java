@@ -1,30 +1,60 @@
 public class Cifrador {
+    // public String cifraIdiomaLetra ( String original, char x){
+    //     String formato = dividirSilabas(original);
+    //     String nueva = "";
+    //     String ultimaVocal = "";
+    //     boolean cambioSilaba = false;
+    //     for (int i = 0; i < formato.length(); i++) {
+    //         boolean fin = (i==formato.length()-1) ? true : false;
+    //         char c = formato.charAt(i);
+    //         cambioSilaba = (c=='-') ? true : false;
+    //         boolean vocalActual = "aeiou".indexOf(c) != -1;
+    //         if (!cambioSilaba && fin && vocalActual) {
+    //             ultimaVocal = String.valueOf(c);
+    //             nueva += String.valueOf(c) + String.valueOf(x) + ultimaVocal;
+    //         } else if (!cambioSilaba && vocalActual) {
+    //             nueva += String.valueOf(c);
+    //             ultimaVocal = String.valueOf(c);
+    //         } else if (!cambioSilaba) {
+    //             nueva += String.valueOf(c);
+    //         } else if (cambioSilaba) {
+    //             nueva += String.valueOf(x) + ultimaVocal;
+    //             cambioSilaba = false;
+    //         }
+    //     }
+    //     System.out.println(nueva);
+    //     return nueva;
+    // }
+
     public String cifraIdiomaLetra ( String original, char x){
         String formato = dividirSilabas(original);
         String nueva = "";
-        boolean cambioSilaba = false;
         String ultimaVocal = "";
         for (int i = 0; i < formato.length(); i++) {
-            boolean fin = (i==formato.length()-1) ? true : false;
             char c = formato.charAt(i);
-            cambioSilaba = (c=='-') ? true : false;
-            boolean vocalActual = "aeiou".indexOf(c) != -1;
-            if (!cambioSilaba && fin && vocalActual) {
+            boolean esVocal = "aeiou".indexOf(c) != -1;
+            if (esVocal) {
                 ultimaVocal = String.valueOf(c);
-                nueva += String.valueOf(c) + String.valueOf(x) + ultimaVocal;
-            } else if (!cambioSilaba && vocalActual) {
-                nueva += String.valueOf(c);
-                ultimaVocal = String.valueOf(c);
-            } else if (!cambioSilaba) {
-                nueva += String.valueOf(c);
-            } else if (cambioSilaba) {
+            }
+            if (c == '-') {
                 nueva += String.valueOf(x) + ultimaVocal;
-                cambioSilaba = false;
+                continue;
+            }
+            if(i != formato.length()-1){
+                nueva += c;
+            }
+            if (i == formato.length() - 1){
+                if(esVocal){
+                    nueva += c + String.valueOf(x) + ultimaVocal;
+                } else {
+                    nueva += String.valueOf(x) + ultimaVocal + c;
+                }
             }
         }
         System.out.println(nueva);
         return nueva;
     }
+
 
     public static String dividirSilabas(String palabra) {
         String resultado = "";
