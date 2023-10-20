@@ -33,7 +33,7 @@ public class Cifrador {
         String cifra = "";
         for(int i = 0; i < original.length(); i++){
             char c = original.charAt(i);
-            boolean esConsonante = "aeiou".indexOf(c) == -1;
+            boolean esConsonante = "aeiou ".indexOf(c) == -1;
             String consonanteActual = "";
             if(esConsonante){
                 consonanteActual = String.valueOf(c);
@@ -50,7 +50,7 @@ public class Cifrador {
         String nueva = "";
         for(int i = 0; i < cifrado.length(); i++){
             char c = cifrado.charAt(i);
-            boolean esConsonanteActual = "abcdefghijklmnñopqrstuvwxyz ".indexOf(c) != -1;
+            boolean esConsonanteActual = "bcdfghjklmnñpqrstvwxyz ".indexOf(c) != -1;
             boolean repetida = c==cifrado.charAt(i+2);
             if(esConsonanteActual && repetida){
                 nueva += c;
@@ -62,6 +62,29 @@ public class Cifrador {
         System.out.println(nueva);
         return nueva;
     }
+
+    public String decifraLetra(String cifrado){
+        String nueva = "";
+        for(int i = 0; i < cifrado.length(); i++){
+            char c = cifrado.charAt(i);
+            if (i + 2 >= cifrado.length()) {
+                nueva += c;
+                break; 
+            }
+            boolean esVocalActual = "aeiou ".indexOf(c) != -1;
+            boolean repetida = c==cifrado.charAt(i+2);
+            if(esVocalActual && repetida){
+                nueva += c;
+                i += 2;
+            } else {
+                nueva += c;
+            }
+        }
+        System.out.println(nueva);
+        return nueva;
+    }
+
+
     public static String dividirSilabas(String palabra) {
         String resultado = "";
         String silaba = "";
