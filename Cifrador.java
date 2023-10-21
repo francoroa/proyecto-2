@@ -1,4 +1,4 @@
-public class Cifrador {
+public class Cifrador implements Servicios {
 
 
     public String cifraIdiomaLetra ( String original, char x){
@@ -48,7 +48,7 @@ public class Cifrador {
         return cifra;
     }
 
-    public String decifraLadron(String cifrado){
+    public String descifraIdiomaLadron(String cifrado){
         String nueva = "";
         for(int i = 0; i < cifrado.length(); i++){
             char c = cifrado.charAt(i);
@@ -65,7 +65,7 @@ public class Cifrador {
         return nueva;
     }
 
-    public String decifraLetra(String cifrado){
+    public String descifraIdiomaLetra(String cifrado){
         String nueva = "";
         for(int i = 0; i < cifrado.length(); i++){
             char c = cifrado.charAt(i);

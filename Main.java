@@ -29,20 +29,24 @@ public class Main {
                  case 2:
                      System.out.println("Escribe la cadena en idioma letra a descifrar");
                      String cifraLetra = sc.nextLine();
-                     prueba.decifraLetra(cifraLetra);
+                     prueba.descifraIdiomaLetra(cifraLetra);
                      break;
                  case 3:
                      System.out.println("Escribe una cadena de texto a cifrar (ladron)");
                      String cadenaLadron = sc.nextLine();
-                     System.out.println("Escribe la vocal cifradora");
+                     System.out.println("Escribe la VOCAL cifradora");
                      char v = sc.next().charAt(0);
                      sc.nextLine();
+                     if("aeiou".indexOf(v) == -1){
+                        System.out.println("No ingresaste una vocal :)");
+                        break;
+                     }
                      prueba.cifraIdiomaLadron(cadenaLadron, v);
                      break;
                  case 4:
                      System.out.println("Escribe la cadena en idioma ladron a descifrar");
                      String cifraLadron = sc.nextLine();
-                     prueba.decifraLadron(cifraLadron);
+                     prueba.descifraIdiomaLadron(cifraLadron);
                      break;
                  case 5:
                      System.out.println("Escribe la cadena a aplicar vesre");
@@ -66,17 +70,19 @@ public class Main {
                  }
              }
          }
-         sc.close();
+        sc.close();
          
+        // Los siguientes son ejemplos usados para testear el codigo sin utilizar el menu
+
         // prueba.cifraIdiomaLetra("uaugmsaumcmcapspreizxn", 'f');
         // prueba.cifraIdiomaLetra("peine", 'f');
         // prueba.cifraIdiomaLetra("aeroportuario", 'f');
         // prueba.cifraIdiomaLetra("cadenas perpetuas", 'p');
         // System.out.println(prueba.dividirSilabas("esperanza"));
         // System.out.println(prueba.dividirSilabas("speranza"));
-        // prueba.cifraIdiomaLadron("cadenas perpetuas", 'i');
-        // System.out.println(prueba.decifraLadron("cicadideninasis piperirpipetituasis"));
-        // System.out.println(prueba.decifraLetra("capadepenapas peperpepetuapas"));    
+        // prueba.cifraIdiomaLetra("perro negro pegamento", 'p');
+        // System.out.println(prueba.descifraIdiomaLetra("poperorroro nonegogroro popegogamomenontoto"));
+        // System.out.println(prueba.descifraIdiomaLetra("capadepenapas peperpepetuapas"));    
         // System.out.println(prueba.dividirSilabas("los animales nuevos"));
         // System.out.println(prueba.aplicaVesre("los animales nuevos")); 
         // System.out.println(prueba.dividirSilabas("esperanza"));
