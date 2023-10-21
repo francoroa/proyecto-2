@@ -84,6 +84,72 @@ public class Cifrador {
         return nueva;
     }
 
+    public String aplicaVesre(String cadena){
+        String palabra = "";
+        String resultado = "";
+
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            if (c == ' ' || i == cadena.length() - 1) {
+                if (i == cadena.length() - 1 && c != ' ') {
+                    palabra += c;
+                }
+                resultado += vesrePalabra(palabra);
+                if (c == ' ') {
+                    resultado += ' ';
+                }
+                palabra = "";
+            } else {
+                palabra += c;
+            }
+        }
+        return resultado;
+    }
+
+    public static String vesrePalabra(String mensaje){
+        String formato = mensaje;
+        String vesre = "";
+        boolean inicioVocal = "aeiou".indexOf(formato.charAt(0)) != -1;
+        boolean finalVocal = "aeiou".indexOf(formato.charAt(formato.length()-1)) != -1;
+        char inicio = ' ';
+        char fin = ' ';
+
+
+        if(inicioVocal&&!finalVocal){
+            inicio = formato.charAt(0);
+            fin = formato.charAt(formato.length()-1);
+            formato = formato.substring(1, formato.length()-1);
+            vesre = inicio + inversionSilabica(dividirSilabas(formato)) + fin;
+        }else if(inicioVocal){
+            inicio = formato.charAt(0);
+            formato = formato.substring(1);
+            vesre = inicio + inversionSilabica(dividirSilabas(formato));
+        } else if(!finalVocal){
+            fin = formato.charAt(formato.length()-1);
+            formato = formato.substring(0, formato.length()-1);
+            vesre = inversionSilabica(dividirSilabas(formato)) + fin;
+        }
+
+        return vesre;
+
+    }
+
+    public static String inversionSilabica(String palabra){
+        String resultado = "";
+        String nuevaSilaba = "";
+        for(int i = palabra.length()-1; i >= 0; i--){
+            char c = palabra.charAt(i);
+            boolean esCambio = c=='-';
+            if(!esCambio){
+                nuevaSilaba = c + nuevaSilaba;
+            } else {
+                resultado += nuevaSilaba;
+                nuevaSilaba = "";
+            }
+        }
+        resultado += nuevaSilaba;
+        return resultado;
+    }
 
     public static String dividirSilabas(String palabra) {
         String resultado = "";
