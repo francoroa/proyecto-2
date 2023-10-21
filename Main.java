@@ -14,7 +14,7 @@ public class Main {
              System.out.println("Opción 3: Cifrador idioma ladron");
              System.out.println("Opción 4: Descifrador idioma ladron");
              System.out.println("Opción 5: Aplicador vesre");
-             System.out.println("Opción 5: Terminar ejecución");
+             System.out.println("Opción 6: Terminar ejecución");
              int opcion = sc.nextInt();
              sc.nextLine();
              switch(opcion){
@@ -23,6 +23,7 @@ public class Main {
                      String cadenaLetra = sc.nextLine();
                      System.out.println("Escribe la consonante cifradora");
                      char x = sc.next().charAt(0);
+                     sc.nextLine();
                      prueba.cifraIdiomaLetra(cadenaLetra, x);
                      break;
                  case 2:
@@ -33,8 +34,9 @@ public class Main {
                  case 3:
                      System.out.println("Escribe una cadena de texto a cifrar (ladron)");
                      String cadenaLadron = sc.nextLine();
-                     System.out.println("Escribe la consonante cifradora");
+                     System.out.println("Escribe la vocal cifradora");
                      char v = sc.next().charAt(0);
+                     sc.nextLine();
                      prueba.cifraIdiomaLadron(cadenaLadron, v);
                      break;
                  case 4:

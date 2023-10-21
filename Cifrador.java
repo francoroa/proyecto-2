@@ -106,10 +106,12 @@ public class Cifrador {
                 palabra += c;
             }
         }
+        System.out.println(resultado);
         return resultado;
     }
 
     public static String normalizador(String cadena){
+        cadena = cadena.toLowerCase();
         String nuevo = "";
         for(int i = 0; i<cadena.length();i++){
             char c = cadena.charAt(i);
