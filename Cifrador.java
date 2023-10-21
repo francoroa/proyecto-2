@@ -1,7 +1,8 @@
 public class Cifrador {
 
+
     public String cifraIdiomaLetra ( String original, char x){
-        String formato = dividirSilabas(original);
+        String formato = dividirSilabas(normalizador(original));
         String nueva = "";
         String ultimaVocal = "";
         for (int i = 0; i < formato.length(); i++) {
@@ -30,9 +31,10 @@ public class Cifrador {
     }
 
     public String cifraIdiomaLadron(String original, char v){
+        String formato = normalizador(original);
         String cifra = "";
-        for(int i = 0; i < original.length(); i++){
-            char c = original.charAt(i);
+        for(int i = 0; i < formato.length(); i++){
+            char c = formato.charAt(i);
             boolean esConsonante = "aeiou ".indexOf(c) == -1;
             String consonanteActual = "";
             if(esConsonante){
@@ -87,11 +89,12 @@ public class Cifrador {
     public String aplicaVesre(String cadena){
         String palabra = "";
         String resultado = "";
+        String cadenaFormato = normalizador(cadena);
 
-        for (int i = 0; i < cadena.length(); i++) {
-            char c = cadena.charAt(i);
-            if (c == ' ' || i == cadena.length() - 1) {
-                if (i == cadena.length() - 1 && c != ' ') {
+        for (int i = 0; i < cadenaFormato.length(); i++) {
+            char c = cadenaFormato.charAt(i);
+            if (c == ' ' || i == cadenaFormato.length() - 1) {
+                if (i == cadenaFormato.length() - 1 && c != ' ') {
                     palabra += c;
                 }
                 resultado += vesrePalabra(palabra);
@@ -104,6 +107,37 @@ public class Cifrador {
             }
         }
         return resultado;
+    }
+
+    public static String normalizador(String cadena){
+        String nuevo = "";
+        for(int i = 0; i<cadena.length();i++){
+            char c = cadena.charAt(i);
+            switch (c) {
+                case 'á':
+                    nuevo += 'a';
+                    break;
+                case 'é':
+                    nuevo += 'e';
+                    break;
+                case 'í':
+                    nuevo += 'i';
+                    break;
+                case 'ó':
+                    nuevo += 'o';
+                    break;
+                case 'ú':
+                    nuevo += 'u';
+                    break;
+                case 'ü':
+                    nuevo += 'u';
+                    break;
+                default:
+                    nuevo += c;
+                    break;
+            }
+        }
+        return nuevo;
     }
 
     public static String vesrePalabra(String mensaje){
